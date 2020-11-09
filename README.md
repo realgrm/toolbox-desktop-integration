@@ -3,7 +3,7 @@
 ### !! EM CONSTRUÇÃO !!
 
 ### Objetivo
-Sempre que for instalado um programa novo no Fedora Silverblue através do toolbox (podman), criar um atalho na máquina real, através da automatização do processo manual abaixo.
+Criar um script que automatize a criação de um atalho (arquivo desktop) na máquina real sempre que for instalado um programa novo no Fedora Silverblue através do toolbox (podman). Será utilizado o processo manual abaixo como base.
 
 ### Processo Manual
 Pesquisando, descobri que os conteiners da toolbox (podman) ficam em ~/.local/share/containers
