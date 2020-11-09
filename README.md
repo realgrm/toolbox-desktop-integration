@@ -2,10 +2,10 @@
 
 ### !! EM CONSTRUÇÃO !!
 
-### Objetivo
+## Objetivo
 Criar um script que automatize a criação de um atalho (arquivo desktop) na máquina real sempre que for instalado um programa novo no Fedora Silverblue através do toolbox (podman). Será utilizado o processo manual abaixo como base.
 
-### Processo Manual
+## Processo Manual
 Pesquisando, descobri que os conteiners da toolbox (podman) ficam em ~/.local/share/containers
 
 Então instalei o blender na toolbox para fazer um teste. Verifiquei que os locais de destino são os seguintes:
@@ -27,7 +27,7 @@ E de ícone
 De:Icon=blender
 Para:Icon=/home/realgrm/Documents/Links/Fedora Container/usr/share/icons/hicolor/scalable/apps/blender.svg
 
-### Imagens
+## Imagens
 
 #### Arquivo Origem:
 ![desktop_source](https://user-images.githubusercontent.com/23300290/98545368-252a1e00-2274-11eb-8380-f3c894af5df0.png)
@@ -35,5 +35,5 @@ Para:Icon=/home/realgrm/Documents/Links/Fedora Container/usr/share/icons/hicolor
 #### Arquivo Destino:
 ![desktop_destination](https://user-images.githubusercontent.com/23300290/98545365-24918780-2274-11eb-8053-0851b496abdc.png)
 
-#### Menu Libre
+#### Menu Libre:
 ![desktop-menulibre](https://user-images.githubusercontent.com/23300290/98501705-becedc80-222e-11eb-8ae8-3fd64bad47d4.png)
