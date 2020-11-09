@@ -2,10 +2,10 @@
 
 ### !! EM CONSTRUÇÃO !!
 
-### Resumo:
-Sempre que for instalado um programa novo no Fedora Silverblue através do toolbox, criar atalho na máquina real.
+### Objetivo
+Sempre que for instalado um programa novo no Fedora Silverblue através do toolbox (podman), criar um atalho na máquina real, através da automatização do processo manual abaixo.
 
-### Teste inicial
+### Processo Manual
 Pesquisando, descobri que os conteiners da toolbox (podman) ficam em ~/.local/share/containers
 
 Então instalei o blender na toolbox para fazer um teste. Verifiquei que os locais de destino são os seguintes:
@@ -37,6 +37,3 @@ Para:Icon=/home/realgrm/Documents/Links/Fedora Container/usr/share/icons/hicolor
 
 #### Menu Libre
 ![desktop-menulibre](https://user-images.githubusercontent.com/23300290/98501705-becedc80-222e-11eb-8ae8-3fd64bad47d4.png)
-
-### Objetivo:
-Automatizar o processo manual acima para cada aplicativo instalado através da toolbox do Fedora Silverblue na imagem do conteiner do Podman
