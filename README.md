@@ -1,7 +1,7 @@
 # podman-desktop-file-copy-to-user
 
 ### Resumo:
-Sempre que for instalado um programa novo Fedora Silverblue através do toolbox, criar atalho na máquina real.
+Sempre que for instalado um programa novo no Fedora Silverblue através do toolbox, criar atalho na máquina real.
 
 ### Teste inicial
 Pesquisando, descobri que os conteiners da toolbox (podman) ficam em ~/.local/share/containers
