@@ -91,9 +91,9 @@ Para utilizar o programa recém instalado, é necessário reiniciar para utiliza
 - flatpak  
 Muitos aplicativos ainda não foram portados para este formato
 - dentro de un contêiner do podman usando a toolbox  
+Eles foram feitos para instalar programas em CLI (terminal) e não aplicativos gráficos (GUI). Portanto, quando instalado um aplicativo em GUI, ele não fica totalmente integrado só sistema. Como por exemplo os atalhos (arquivo desktop), não ficam visíveis ao sistema hospedeiro, portanto o aplicativo não aparece na grade de aplicativos  
 
-rams and not GUI programs. So when a GUI app is installed, it is not fully integrated to the system. For example, the app shorcut (desktop file) is not visible to the host OS.
-
+Esta página
 So this page shows the manual steps taken to minimally integrate the desktop file with Silverblue.  
 And aims to create some way of doing it automatically.  
 The manual steps were tested with a few different apps, and in all of them, there was only one toolbox created.
