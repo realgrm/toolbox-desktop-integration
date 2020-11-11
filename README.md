@@ -4,15 +4,15 @@
 
 ## Preface
 
-Currently, to install something in Silverblue, the main options are:
+Currently, to install something in Silverblue, the main options are (with its main drawbacks):
 - rpm-ostree  
-Main drawback: It have to reboot to login with the image that contains the new installed packages
+It have to reboot to login with the image that contains the new installed packages
 - flatpak  
-Main drawbacks: Many apps are not ported to this format yet
+Many apps are not ported to this format yet
 - inside podman container trough toolbox  
-Main drawback: Is design to install CLI programs and not GUI programs. So when a GUI app is installed, it is not fully integrated to the system. For example, the app shorcut (desktop file) is not visible to the host OS.
+Is design to install CLI programs and not GUI programs. So when a GUI app is installed, it is not fully integrated to the system. For example, the app shorcut (desktop file) is not visible to the host OS.
 
-So this page shows the manual steps taken to minimally integrate the desktop file with Silverblue.  
+So this page shows the manual steps taken to minimally integrate this desktop file with Silverblue.  
 And aims to create some way of doing it automatically.  
 The manual steps were tested with a few different apps, and in all of them, there was only one toolbox created.
 
@@ -77,20 +77,22 @@ App os running and in the Dash
 App icon in Dash indicates that it is running, however in the Apo Grid there is no indicator below the icon
 ![image](https://user-images.githubusercontent.com/23300290/98615618-d616d400-22d9-11eb-8fce-3e3d3c09ffaa.png)
 
+__________________________________  
 
 # Em português do Brasil (pt-br)
 
 ### !! EM CONSTRUÇÃO !!
 
-## Preface
+## Prefácio
 
-Currently, to install something in Silverblue, the main options are:
+Atualmente, para instalar algo no Fedora Silverblue, as principais opções são (com suas respectivas principais desvantagens):
 - rpm-ostree  
-Main drawback: It have to reboot to login with the image that contains the new installed packages
+Para utilizar o programa recém instalado, é necessário reiniciar para utilizar a nova imagem do sistema com os pacotes recém adicionados inclusos
 - flatpak  
-Main drawbacks: Many apps are not ported to this format yet
-- inside podman container trough toolbox  
-Main drawback: Is design to install CLI programs and not GUI programs. So when a GUI app is installed, it is not fully integrated to the system. For example, the app shorcut (desktop file) is not visible to the host OS.
+Muitos aplicativos ainda não foram portados para este formato
+- dentro de un contêiner do podman usando a toolbox  
+
+rams and not GUI programs. So when a GUI app is installed, it is not fully integrated to the system. For example, the app shorcut (desktop file) is not visible to the host OS.
 
 So this page shows the manual steps taken to minimally integrate the desktop file with Silverblue.  
 And aims to create some way of doing it automatically.  
