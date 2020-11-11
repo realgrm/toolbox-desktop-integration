@@ -7,7 +7,7 @@ Create a script that automates the creation of a shortcut (desktop file) on the 
 The manual process below will be used as the basis.
 
 ## Manual Process
-Searching, I found that the containers of the toolbox (podman) are in ~/.local/share/containers
+I found that the containers of the toolbox (podman) are in ~/.local/share/containers
 
 
 So I installed blender in the toolbox to do a test.  I have verified that the destination locations are as follows:
@@ -34,6 +34,10 @@ To: Exec=toolbox run blender% f
 - The icon definition line:
 From: Icon=blender
 To: Icon=/home/realgrm/Documents/Links/Fedora Container/usr/share/icons/hicolor/scalable/apps/blender.svg 
+
+PS: the strings below is specific to my installation, may vary to you:
+- realgrm: user name
+- d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f: folder created from podman to store the files of this specific conteiner
 
  ## Images
 
@@ -91,6 +95,10 @@ Para: Exec=toolbox run blender %f
 - A linha de definição de ícone:  
 De: Icon=blender  
 Para: Icon=/home/realgrm/Documents/Links/Fedora Container/usr/share/icons/hicolor/scalable/apps/blender.svg 
+
+OBS: As strings abaixo são específicas da minha instalação pode ser diferente para você: 
+- "realgrm": nome do usuário
+- "d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f": pasta criada pelo podman pra guardar os arquivos deste contêiner em específico
 
 ## Imagens
 
