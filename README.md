@@ -10,11 +10,11 @@ It have to reboot to login with the image that contains the new installed packag
 - flatpak  
 Many apps are not ported to this format yet
 - inside podman container trough toolbox  
-Is design to install CLI programs and not GUI programs. So when a GUI app is installed, it is not fully integrated to the system. For example, the app shorcut (desktop file) is not visible to the host OS.
+Is design to install CLI programs and not GUI programs. So when a GUI app is installed, it is not fully integrated to the system. For example, ther's no app shortcut in the App Grip. In other words, the .desktop file is not present in the correct location to be visible.
 
-So this page shows the manual steps taken to minimally integrate this desktop file with Silverblue.  
+So this page shows the manual steps taken to minimally integrate this .desktop file with Silverblue.  
 And aims to create some way of doing it automatically.  
-The manual steps were tested with a few different apps, and in all of them, there was only one toolbox created.
+The manual steps were tested with a few different apps, and in all of them, only one toolbox was created.
 
 All the drawbacks listed are my opinion, based on my current use of Silverblue. 
 
