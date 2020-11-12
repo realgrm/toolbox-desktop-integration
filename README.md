@@ -40,13 +40,16 @@ So I copied the desktop file and rename it to:
 
 In the content of the file, I modified:
 
-| From            | To                                                                                                    |
-|-----------------|-------------------------------------------------------------------------------------------------------|
-| Name=Blender    | Name=Blender (container)                                                                              |
-| Exec=blender% f | Exec=toolbox run blender% f                                                                           |
-| Icon=blender    | Icon=/home/realgrm/Documents/Links/Fedora Container/usr/share/icons/hicolor/scalable/apps/blender.svg |
+| Description    	| Before 	| After 	|
+|-	|-	|-	|
+| Desktop File 	| ![desktop_source](https://user-images.githubusercontent.com/23300290/98545368-252a1e00-2274-11eb-8380-f3c894af5df0.png) 	| ![desktop_destination](https://user-images.githubusercontent.com/23300290/98545365-24918780-2274-11eb-8053-0851b496abdc.png) 	|
+| Location 	| ~/.local/share/containers/storage/overlay/d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f/diff/usr/share/applications/blender.desktop  	| ~/.local/share/applications/toolbox-blender.desktop 	|
+| Name Line 	| Name=Blender 	| Name=Blender (container) 	|
+| Exec Line 	| Exec=blender% f 	| Exec=toolbox run blender% f 	|
+| Icon Line 	| Icon=blender 	| Icon=/home/realgrm/Documents/Links/Fedora Container/usr/share/icons/hicolor/scalable/apps/blender.svg 	|
 
-(It has to be the full path, with no abbreviations like ~/ for the user's folder) 
+
+It has to be used the full path inside the .desktop file, with no abbreviations like ~/ for the user's folder
 
 
 PS: the strings below is specific to my installation, may vary to you:
