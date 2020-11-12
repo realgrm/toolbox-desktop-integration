@@ -41,12 +41,12 @@ So I copied the desktop file and rename it to:
 In the content of the file, I modified:
 
 | Description    	| Before 	| After 	|
-|-	|-	|-	|
-| Desktop File 	| ![desktop_source](https://user-images.githubusercontent.com/23300290/98545368-252a1e00-2274-11eb-8380-f3c894af5df0.png) 	| ![desktop_destination](https://user-images.githubusercontent.com/23300290/98545365-24918780-2274-11eb-8053-0851b496abdc.png) 	|
+|-	|:-:	|:-:	|
+| Desktop File 	| <img src="https://user-images.githubusercontent.com/23300290/98545368-252a1e00-2274-11eb-8380-f3c894af5df0.png" width="500"/> 	| <img src="https://user-images.githubusercontent.com/23300290/98545365-24918780-2274-11eb-8053-0851b496abdc.png" width="500"/> 	|
 | Location 	| ~/.local/share/containers/storage/overlay/d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f/diff/usr/share/applications/blender.desktop  	| ~/.local/share/applications/toolbox-blender.desktop 	|
 | Name Line 	| Name=Blender 	| Name=Blender (container) 	|
 | Exec Line 	| Exec=blender% f 	| Exec=toolbox run blender% f 	|
-| Icon Line 	| Icon=blender 	| Icon=/home/realgrm/Documents/Links/Fedora Container/usr/share/icons/hicolor/scalable/apps/blender.svg 	|
+| Icon Line 	| Icon=blender 	|  	|
 
 
 It has to be used the full path inside the .desktop file, with no abbreviations like ~/ for the user's folder
@@ -58,14 +58,6 @@ PS: the strings below is specific to my installation, may vary to you:
 
  ## Results
 
-#### Desktop file - before
-![desktop_source](https://user-images.githubusercontent.com/23300290/98545368-252a1e00-2274-11eb-8380-f3c894af5df0.png)
-~/.local/share/containers/storage/overlay/d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f/diff/usr/share/applications/blender.desktop  
-
-####  Desktop file - after
-![desktop_destination](https://user-images.githubusercontent.com/23300290/98545365-24918780-2274-11eb-8053-0851b496abdc.png)
-~/.local/share/applications/toolbox-blender.desktop  
-
 #### Menu Libre: Desktop file - after
 ![image](https://user-images.githubusercontent.com/23300290/98615903-6f45ea80-22da-11eb-84a4-cd5f2c7e72cd.png)
 
@@ -74,5 +66,5 @@ App os running and in the Dash
 ![image](https://user-images.githubusercontent.com/23300290/98615310-0ca01f00-22d9-11eb-853a-f9b45b307b42.png)
 
 #### Show Applications:
-App icon in Dash indicates that it is running, however in the Apo Grid there is no indicator below the icon
+App icon in Dash indicates that it is running, however in the Apo Grid there is no indicator below the icon  
 ![image](https://user-images.githubusercontent.com/23300290/98615618-d616d400-22d9-11eb-8fce-3e3d3c09ffaa.png)
