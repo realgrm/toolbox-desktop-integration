@@ -32,7 +32,7 @@ The manual process below will be used as the basis.
 | Icon File Location 	| ~/.local/share/containers/storage/overlay/{overlay-id}/diff/usr/share/icons/hicolor/scalable/apps/blender.svg 	| /home/realgrm/.local/share/icons/hicolor/scalable/apps/toolbox/blender.svg 	|
 
 Replace {overlay-id} with the folder created to your container. Mine was "d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f" folder.  
-I discover the correct folder by installing an app and searching for the app's .desktop file  
+I discover the correct folder by installing an app and searching for the app's .desktop file inside ~/.local/share/containers/storage/overlay/  
 
 - Inside the ~/.local/share/applications/toolbox-blender.desktop file, I edited the following lines
 
