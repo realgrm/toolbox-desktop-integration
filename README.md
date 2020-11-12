@@ -43,10 +43,8 @@ I discover the correct folder by installing an app and searching for the app's d
 
  ## Results
 
-#### Overview:
-App is running and the system adds "(on toolbox)" in the title   
 ![image](https://user-images.githubusercontent.com/23300290/98615310-0ca01f00-22d9-11eb-853a-f9b45b307b42.png)
+Activities Overview: App is running and the system adds "(on toolbox)" in the title   
 
-#### Show Applications:
-App icon in Dash indicates that it is running, however in the App Grid there is no indicator below the icon  
 ![image](https://user-images.githubusercontent.com/23300290/98615618-d616d400-22d9-11eb-8fce-3e3d3c09ffaa.png)
+Show Applications: App icon in Dash indicates that it is running, however in the App Grid there is no indicator below the icon  
