@@ -28,20 +28,16 @@ I found that the containers of the toolbox (podman) are in:
 
 So I installed blender in the toolbox as a test. I found the following locations and made these modifications:
 
-| Description    	| Before (container) 	| After (Silverblue) 	|
+| Description 	| Before (container) 	| After (Silverblue) 	|
 |-	|-	|-	|
-| Desktop File 	| ![](https://user-images.githubusercontent.com/23300290/98545368-252a1e00-2274-11eb-8380-f3c894af5df0.png) 	| ![](https://user-images.githubusercontent.com/23300290/98545365-24918780-2274-11eb-8053-0851b496abdc.png) 	|
-| Location 	| ~/.local/share/containers/storage/overlay/d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f/diff/usr/share/applications/blender.desktop  	| ~/.local/share/applications/toolbox-blender.desktop 	|
+| Desktop File Location 	| ~/.local/share/containers/storage/overlay/{overlay-id}/diff/usr/share/applications/blender.desktop 	| ~/.local/share/applications/toolbox-blender.desktop 	|
+|  	|  	|  	|
+| Icon File Location 	| ~/.local/share/containers/storage/overlay/{overlay-id}/diff/usr/share/icons/hicolor/scalable/apps/blender.svg 	| /home/realgrm/.local/share/icons/hicolor/scalable/apps/toolbox/blender.svg 	|
 | Name Line 	| Name=Blender 	| Name=Blender (container) 	|
 | Exec Line 	| Exec=blender% f 	| Exec=toolbox run blender% f 	|
-| Icon Line 	| Icon=blender 	| Icon=/home/realgrm/.local/share/containers/storage/overlay/d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f/diff/usr/share/icons/hicolor/scalable/apps/blender.svg 	|
-
-It has to be used the full path inside the .desktop file, with no abbreviations like ~/ for the user's folder
 
 
-PS: the strings below is specific to my installation, may vary to you:
-- realgrm: user name
-- d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f: folder created from podman to store the files of  a specific conteiner in my machine
+PS: Replace {overlay-id} with the folder created to your container. Mine was "d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f" folder. I discover the correct folder by installing an app and searching for the app's .desktop file
 
  ## Results
 
