@@ -18,22 +18,31 @@ alias script-remove-script
 
 
 
+#!/bin/bash
+
 # manual input of folder
-overlay-id = "d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f"
+overlay_id="d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f"
 
 # get toolbox id
-toolbox-id = toolbox list | grep running | awk '{print $1}'
+toolbox_id=$(toolbox list | grep running | awk '{print $1}')
+
+echo "$toolbox_id"
+echo "$overlay_id"
+test="${HOME}/.local/share/applications/toolbox-${toolbox_id}"
 
 # create backup
-mv "${HOME}/.local/share/containers/storage/overlay/${overlay-id}/diff/usr/share/applications" \
-	"${HOME}/.local/share/containers/storage/overlay/${overlay-id}/diff/usr/share/applications-backup"
+mv "${HOME}/.local/share/containers/storage/overlay/${overlay_id}/diff/usr/share/applications" \
+"${HOME}/.local/share/containers/storage/overlay/${overlay_id}/diff/usr/share/applications-backup"
 
 # create folder inside applications (host) to current toolbox
-mkdir "${HOME}/.local/share/applications/toolbox-${toolbox-id}"
+mkdir "${HOME}/.local/share/applications/toolbox-${toolbox_id}"
 
 # create symbolic link
-ln -s "${HOME}/.local/share/applications/toolbox-${toolbox-id}" \
-	"${HOME}/.local/share/containers/storage/overlay/${overlay-id}/diff/usr/share/applications-backup"
+ln -s "${HOME}/.local/share/applications/toolbox-${toolbox_id}" \
+"${HOME}/.local/share/containers/storage/overlay/${overlay_id}/diff/usr/share/applications"
 
 # copy contents of the backup
-cp 
+cp "${HOME}/.local/share/containers/storage/overlay/${overlay_id}/diff/usr/share/applications-backup/." \
+"${HOME}/.local/share/applications/toolbox-${toolbox_id}"
+
+alias install 
