@@ -26,28 +26,15 @@ The manual process below will be used as the basis.
 I found that the containers of the toolbox (podman) are in:  
 ~/.local/share/containers
 
+So I installed blender in the toolbox as a test. I found the following locations and made these modifications:
 
-So I installed blender in the toolbox to do a test.  I have verified that the destination locations are as follows:
-
-- Desktop file: container folder:  
-~/.local/share/containers/storage/overlay/d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f/diff/usr/share/applications/blender.desktop
-
-- Icon: container folder:  
-~/.local/share/containers/storage/overlay/d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f/diff/usr/share/icons/hicolor/scalable/apps/blender.svg
-
-So I copied the desktop file and rename it to:  
-~/.local/share/applications/toolbox-blender.desktop
-
-In the content of the file, I modified:
-
-| Description    	| Before 	| After 	|
-|-	|:-:	|:-:	|
-| Desktop File 	| <img src="https://user-images.githubusercontent.com/23300290/98545368-252a1e00-2274-11eb-8380-f3c894af5df0.png" width="500"/> 	| <img src="https://user-images.githubusercontent.com/23300290/98545365-24918780-2274-11eb-8053-0851b496abdc.png" width="500"/> 	|
+| Description    	| Before (container) 	| After (Silverblue) 	|
+|-	|-	|-	|
+| Desktop File 	| ![](https://user-images.githubusercontent.com/23300290/98545368-252a1e00-2274-11eb-8380-f3c894af5df0.png) 	| ![](https://user-images.githubusercontent.com/23300290/98545365-24918780-2274-11eb-8053-0851b496abdc.png) 	|
 | Location 	| ~/.local/share/containers/storage/overlay/d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f/diff/usr/share/applications/blender.desktop  	| ~/.local/share/applications/toolbox-blender.desktop 	|
 | Name Line 	| Name=Blender 	| Name=Blender (container) 	|
 | Exec Line 	| Exec=blender% f 	| Exec=toolbox run blender% f 	|
-| Icon Line 	| Icon=blender 	|  	|
-
+| Icon Line 	| Icon=blender 	| Icon=/home/realgrm/.local/share/containers/storage/overlay/d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f/diff/usr/share/icons/hicolor/scalable/apps/blender.svg 	|
 
 It has to be used the full path inside the .desktop file, with no abbreviations like ~/ for the user's folder
 
