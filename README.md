@@ -31,7 +31,6 @@ So I installed blender in the toolbox as a test. I found the following locations
 | Description 	| Before (container) 	| After (Silverblue) 	|
 |-	|-	|-	|
 | Desktop File Location 	| ~/.local/share/containers/storage/overlay/{overlay-id}/diff/usr/share/applications/blender.desktop 	| ~/.local/share/applications/toolbox-blender.desktop 	|
-|  	|  	|  	|
 | Icon File Location 	| ~/.local/share/containers/storage/overlay/{overlay-id}/diff/usr/share/icons/hicolor/scalable/apps/blender.svg 	| /home/realgrm/.local/share/icons/hicolor/scalable/apps/toolbox/blender.svg 	|
 | Name Line 	| Name=Blender 	| Name=Blender (container) 	|
 | Exec Line 	| Exec=blender% f 	| Exec=toolbox run blender% f 	|
