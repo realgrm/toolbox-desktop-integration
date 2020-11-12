@@ -10,9 +10,9 @@ It have to reboot to login with the image that contains the new installed packag
 - flatpak  
 Many apps are not ported to this format yet
 - inside podman container trough toolbox  
-Is design to install CLI programs and not GUI programs. So when a GUI app is installed, it is not fully integrated to the system. For example, ther's no app shortcut in the App Grip. In other words, the .desktop file is not present in the correct location to be visible.
+Is design to install CLI programs and not GUI programs. So when a GUI app is installed, it is not fully integrated to the system. For example, ther's no app shortcut in the App Grip. In other words, the desktop file is not present in the correct location to be visible.
 
-So this page shows the manual steps taken to minimally integrate this .desktop file with Silverblue.  
+So this page shows the manual steps taken to minimally integrate this desktop file with Silverblue.  
 And aims to create some way of doing it automatically.  
 The manual steps were tested with a few different apps, and in all of them, only one toolbox was created.
 
@@ -24,7 +24,7 @@ The manual process below will be used as the basis.
 
 ## Manual Process
 
-- Made a copy of the .desktop file and icon to the home folder
+- Made a copy of the desktop file and icon to the home folder:
 
 | Description 	| Copy (container) 	| Paste (Silverblue) 	|
 |-	|-	|-	|
@@ -32,9 +32,9 @@ The manual process below will be used as the basis.
 | Icon File Location 	| ~/.local/share/containers/storage/overlay/{overlay-id}/diff/usr/share/icons/hicolor/scalable/apps/blender.svg 	| /home/realgrm/.local/share/icons/hicolor/scalable/apps/toolbox/blender.svg 	|
 
 Replace {overlay-id} with the folder created to your container. Mine was "d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f" folder.  
-I discover the correct folder by installing an app and searching for the app's .desktop file inside ~/.local/share/containers/storage/overlay/  
+I discover the correct folder by installing an app and searching for the app's desktop file inside ~/.local/share/containers/storage/overlay/  
 
-- Inside the ~/.local/share/applications/toolbox-blender.desktop file, I edited the following lines
+- Edited the content of ~/.local/share/applications/toolbox-blender.desktop:
 
 | Description 	| Before (container) 	| After (Silverblue) 	|
 |-	|-	|-	|
