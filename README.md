@@ -28,10 +28,15 @@ I found that the containers of the toolbox (podman) are in:
 
 So I installed blender in the toolbox as a test. I found the following locations and made these modifications:
 
-| Description 	| Before (container) 	| After (Silverblue) 	|
+| Description 	| Copy (container) 	| Paste (Silverblue) 	|
 |-	|-	|-	|
 | Desktop File Location 	| ~/.local/share/containers/storage/overlay/{overlay-id}/diff/usr/share/applications/blender.desktop 	| ~/.local/share/applications/toolbox-blender.desktop 	|
 | Icon File Location 	| ~/.local/share/containers/storage/overlay/{overlay-id}/diff/usr/share/icons/hicolor/scalable/apps/blender.svg 	| /home/realgrm/.local/share/icons/hicolor/scalable/apps/toolbox/blender.svg 	|
+
+And inside the ~/.local/share/applications/toolbox-blender.desktop file, I edited the following lines
+
+| Description 	| Before (container) 	| After (Silverblue) 	|
+|-	|-	|-	|
 | Name Line 	| Name=Blender 	| Name=Blender (container) 	|
 | Exec Line 	| Exec=blender% f 	| Exec=toolbox run blender% f 	|
 
