@@ -104,11 +104,3 @@ for i in a:
 print("\n")
 
 import update_desktop_files
-
-
-
-
-
-#Applications
-# create link in usr/share
-# create backup
