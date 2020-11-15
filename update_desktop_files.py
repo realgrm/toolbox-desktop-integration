@@ -16,7 +16,7 @@ files=[]
 
 # defining functions
 
-# to show informations to the user
+
 def print_changes(line,new_line):
     print(line+" [old]")
     print(new_line+" [new]")
@@ -57,21 +57,24 @@ for file_path in Path(applications_folder).glob('*.desktop'):
 # _______________________________________________________________
 
 # Print info to user
+print("_____________________")
+print("\nUPDATE DESKTOP FILES SCRIPT")
+print("_____________________")
 print("\n")
-print("folder: "+applications_folder)
+print("applications_folder: "+applications_folder)
 print("icons_folder: "+icons_folder+"\n")
-
-print("\n")
-print("all .desktop files in folder ("+str(len(all_files))+"):\n")
+print("_____________________")
+print("\nall .desktop files in folder ("+str(len(all_files))+"):\n")
 
 i=""
 for i in all_files:
     print(str(i))
 
-    print("\n")
-    print("desktop files not ok ("+str(len(files))+"):\n")
 
-    i=""
+print("_____________________")
+print("\ndesktop files not ok ("+str(len(files))+"):\n")
+
+i=""
 for i in files:
     print(str(i))
 
