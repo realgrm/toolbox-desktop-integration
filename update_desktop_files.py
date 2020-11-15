@@ -2,12 +2,13 @@
 
 import os
 from pathlib import Path
+import shutil
 
 # _______________________________________________________________
 
 # declare variables
 applications_folder=os.environ['HOME']+'/.local/share/applications/toolbox/'
-icons_folder=os.environ['HOME']+".local/share/icons/toolbox"
+icons_folder=os.environ['HOME']+".local/share/icons/toolbox/"
 icons={}
 all_files=[]
 files=[]
@@ -135,7 +136,7 @@ for file in files:
                 
             # if not found, try to look for all files matching the name in the parent folder
             else:
-                icons_folder=os.environ['HOME']+"/.local/share/icons/toolbox/"
+                
                 print("\nIcon not found. Searching all matching filename inside folder: \n"+icons_folder)
                 
                 for file_path in Path(icons_folder).glob('**/*'+icon_name+'*'):
@@ -156,6 +157,9 @@ for file in files:
         
     #close the file
     fileHandler.close()
+
+    #create a backup
+    shutil.copy2(str(file),str(file).replace("/toolbox/","/toolbox/backup/")+".backup") 
 
     #Open file in write mode
     write_file = open(file, "w")
