@@ -3,11 +3,13 @@
 import os
 from pathlib import Path
 import shutil
+import subprocess
 
 # _______________________________________________________________
 
 # declare variables
 applications_folder=os.environ['HOME']+'/.local/share/applications/toolbox/'
+backup_folder=os.environ['HOME']+"/.local/share/applications_backup/"
 icons_folder=os.environ['HOME']+".local/share/icons/toolbox/"
 icons={}
 all_files=[]
@@ -159,7 +161,7 @@ for file in files:
     fileHandler.close()
 
     #create a backup
-    shutil.copy2(str(file),str(file).replace("/toolbox/","/toolbox/backup/")+".backup") 
+    shutil.copy2(str(file),backup_folder) 
 
     #Open file in write mode
     write_file = open(file, "w")
@@ -171,4 +173,5 @@ for file in files:
     write_file.close()
     print("\n")
 
-os.system("update-desktop-database ~/.local/share/applications")
+#update app shortcuts in app grid
+sts = subprocess.Popen("update-desktop-database" + " ~/.local/share/applications", shell=True).wait()
