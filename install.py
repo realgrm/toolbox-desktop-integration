@@ -48,6 +48,11 @@ def msg_debug():
     print("click=link"+str(click==linksto))
     print("link ok: "+str(havetolink==linksto))
 
+# _______________________________________________________________
+
+print("\n\n_____________________")
+print("\nINSTALL DESKTOP FILES SCRIPT")
+print("_____________________\n")
 
 # _______________________________________________________________
 
@@ -67,14 +72,10 @@ for id in os.listdir(c_overlay):
 if c_usrshare == "": 
     sys.exit(msg_container_file_nok())
 
-# _______________________________________________________________
-
-print("\n\n_____________________")
-print("\nINSTALL DESKTOP FILES SCRIPT")
-print("_____________________")
 print("\nfolder of container: \n"+c_usrshare)
 
 # _______________________________________________________________
+
 
 # Check if links already exists, if not, create them
 
