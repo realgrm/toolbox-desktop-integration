@@ -9,6 +9,7 @@ import sys
 
 # declare variables
 l=os.environ['HOME']+"/.local/share/folder/toolbox"
+backup_folder=os.environ['HOME']+"/.local/share/applications/toolbox/backup/"
 c_usrshare=""
 c_overlay=os.environ['HOME']+"/.local/share/containers/storage/overlay/"
 file_check="/diff/usr/share/"
@@ -100,8 +101,20 @@ for i in a:
         else: msg_link_nok()
     else: msg_file_nok()
 
+print("\n")
+# _______________________________________________________________
+
+#create backup folder
+try:
+    os.mkdir(backup_folder)
+    print("backup folder created:") 
+except:
+  print("backup folder already exists:")
+
+print(backup_folder)
 # _______________________________________________________________
 
 print("\n")
 
+# start another script
 import update_desktop_files
