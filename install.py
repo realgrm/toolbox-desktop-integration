@@ -9,7 +9,6 @@ import sys
 
 # declare variables
 l=os.environ['HOME']+"/.local/share/folder/toolbox"
-backup_folder=os.environ['HOME']+"/.local/share/applications/toolbox/backup/"
 c_usrshare=""
 c_overlay=os.environ['HOME']+"/.local/share/containers/storage/overlay/"
 file_check="/diff/usr/share/"
@@ -69,6 +68,7 @@ for id in os.listdir(c_overlay):
     
     if Path(j).is_dir():
         c_usrshare=i
+        c_id=id
 
 if c_usrshare == "": 
     sys.exit(msg_container_file_nok())
@@ -104,7 +104,9 @@ for i in a:
 print("\n")
 # _______________________________________________________________
 
-#create backup folder
+#create backup folder for desktop files
+backup_folder=os.environ['HOME']+"/.local/share/containers/storage/overlay/"+c_id+"/diff/usr/share/applications_backup/"
+
 try:
     os.mkdir(backup_folder)
     print("backup folder created:") 
@@ -114,7 +116,63 @@ except:
 print(backup_folder)
 # _______________________________________________________________
 
+# create a shortcut in app grip
+
 print("\n")
 
+currentDirectory = os.getcwd()
+desktop_file=os.environ['HOME']+"/.local/share/applications/update_desktop_files.desktop"
+
+f=currentDirectory+"/update_desktop_files.desktop"
+fileHandler = open(f, "r")
+replaced_content = ""
+#looping through the file
+for line in fileHandler:
+
+    #stripping line break
+    line = line.strip()
+
+    # if the criterias bellow don't match, the default is to keep the value
+    new_line=line
+
+    # _______________________________________________________________
+
+    # checking and changing line
+
+    if line.startswith("Exec="):
+        if "bash" in line: break
+        else:
+            new_line = line.replace("Exec=","Exec=bash -c 'cd "+currentDirectory)
+                      
+    elif line.startswith("Icon="):
+        new_line = line.replace("Icon=", "Icon="+currentDirectory+"/")
+
+    replaced_content = replaced_content + new_line + "\n"
+
+#close the file
+fileHandler.close()
+
+sts = subprocess.Popen("cp" + " -n '"+f+"' '"+desktop_file+"'", shell=True).wait()
+
+#Open file in write mode
+write_file = open(desktop_file, "w")
+
+#overwriting the old file contents with the new/replaced content
+write_file.write(replaced_content)
+
+#close the file
+write_file.close()
+print("\n")
+
+
+print("desktop file placed in: \n"+desktop_file)
+print("\n")
+
+# _______________________________________________________________
+
+#try to update apps in App Grid
+sts = subprocess.Popen("update-desktop-database" + " ~/.local/share/applications", shell=True).wait()
+
+# _______________________________________________________________
 # start another script
 import update_desktop_files
