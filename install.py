@@ -12,7 +12,6 @@ l=os.environ['HOME']+"/.local/share/folder/toolbox"
 c_usrshare=""
 c_overlay=os.environ['HOME']+"/.local/share/containers/storage/overlay/"
 file_check="/diff/usr/share/"
-#/var/home/realgrm/.local/share/containers/storage/overlay/b4fa6ff1346dec95ce4454464201fdadfd816e10eb7322048829c551ce032d08/diff
 
 # _______________________________________________________________
 
