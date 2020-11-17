@@ -8,6 +8,7 @@
 [Manual Process](./README.md#Manual_Process)  
 [Results](./README.md#Results)  
 [Installation](./README.md#Installation)  
+[Usage](./README.md#Usage)  
 
 
 
@@ -78,7 +79,7 @@ Menu Editor: The app shortcut is now visible to menu editors, such as Menulibre
 - Run install.py from created folder
 >- Using terminal `~/.update_desktop_files/install.py`
 
-# Use
+# Usage
 
 When the install.py is executed:
 - automatically the script update_desktop_files/install.py is also executed, so your GUI apps installed from toolbox should appear ins the app grid (may takes a few seconds to update the icon in the app grid)
