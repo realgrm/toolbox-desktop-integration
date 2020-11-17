@@ -27,11 +27,11 @@ The manual steps were tested with a few different apps, and in all of them, only
 
 All the drawbacks listed are my opinion, based on my current use of Silverblue. 
 
-## Goal
+# Goal
 This is a project that aims to create a script that automates the creation of a shortcut (desktop file) on the real machine whenever a new program is installed on Fedora Silverblue through the toolbox (podman).  
 The manual process below will be used as the basis.
 
-## Manual_Process
+# Manual_Process
 
 - Made a copy of the desktop file and icon to the home folder:
 
@@ -50,13 +50,15 @@ I discover the correct folder by installing an app and searching for the app's d
 | Name Line 	| Name=Blender 	| Name=Blender (container) 	|
 | Exec Line 	| Exec=blender% f 	| Exec=toolbox run blender% f 	|
 
- ## Results
+ # Results
  
 Activities Overview: App is running and the system adds "(on toolbox)" in the title   
 ![image](https://user-images.githubusercontent.com/23300290/98615310-0ca01f00-22d9-11eb-853a-f9b45b307b42.png)
 
 Show Applications: App icon in Dash indicates that it is running, however in the App Grid there is no indicator below the icon  
 ![image](https://user-images.githubusercontent.com/23300290/98615618-d616d400-22d9-11eb-8fce-3e3d3c09ffaa.png)
+
+Menu Editor: The app shortcut is now visible to menu editors, such as Menulibre
 
 # Installation
 
@@ -69,13 +71,19 @@ Show Applications: App icon in Dash indicates that it is running, however in the
 >- update_desktop_files.png
 >- update_desktop_files.desktop
 - Paste all files of the app folder in ~/.update_desktop_files
+![app_folder](https://user-images.githubusercontent.com/23300290/99392225-2255ab80-28ba-11eb-9615-89a62f13c0ed.png)
 - Give execution permission to the scripts  
 `chmod +x ~/.update_desktop_files/install.py`  
 `chmod +x ~/.update_desktop_files/update_desktop_files.py`
-- Run install.py from this folder
->- Using terminal
->>- enter in directory
-`cd ~/.update_desktop_files`
->>- run installation script
-`./install.py`
+- Run install.py from created folder
+>- Using terminal `~/.update_desktop_files/install.py`
+
+# Use
+
+When the install.py is executed:
+- automatically the script update_desktop_files/install.py is also executed, so your GUI apps installed from toolbox should appear ins the app grid (may takes a few seconds to update the icon in the app grid)
+- it creates an shortcut in AppGrid called Update Desktop Files, that can run the script update_desktop_files.py
+![image](https://user-images.githubusercontent.com/23300290/99393880-c2accf80-28bc-11eb-8815-8b063d499fb7.png)
+
+So every time you install a GUI app inside a toolbox, run the Update Desktop Files.
 
