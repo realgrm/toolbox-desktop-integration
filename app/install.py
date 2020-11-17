@@ -77,8 +77,12 @@ for overlay_id in os.listdir(c_overlay):
         
         for i in a:
             try: 
-                os.makedirs(i)
-                print("folder created: \n"+i+"\n")
+                if not os.path.exists(i):                
+                	os.makedirs(i)
+                	print("folder created: \n"+i+"\n")
+                else: 
+                	print("Folder alreay exists: \n"+i+"\n")
+                	
             except FileExistsError:
                 print("directory already exists:\n"+i+"\n")
             
@@ -101,7 +105,7 @@ for i in a:
         id_trim=overlay_id[:4]
     
         click=usrshare_toolbox.replace("folder",i)+"_"+id_trim   
-        havetolink=c_overlay+"/"+overlay_id+c_usrshare_sufix+i
+        havetolink=c_overlay+"/"+overlay_id+c_usrshare_sufix+"/"+i
         linksto=str(Path(click).resolve())
 
         
