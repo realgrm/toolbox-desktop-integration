@@ -3,10 +3,10 @@
 ### !! UNDER CONSTRUCTION !!
 
 ## Summary
-[Preface](podman-desktop-file-copy-to-user/README.md#Preface)  
-[Goal](podman-desktop-file-copy-to-user/README.md#Goal)  
-[Manual Process](podman-desktop-file-copy-to-user/README.md#Manual Process)  
-[Results](podman-desktop-file-copy-to-user/README.md#Results)  
+[Preface](./README.md#Preface)  
+[Goal](./README.md#Goal)  
+[Manual Process](./README.md#Manual_Process)  
+[Results](./README.md#Results)  
 [Installation](./README.md#Installation)  
 
 
@@ -31,7 +31,7 @@ All the drawbacks listed are my opinion, based on my current use of Silverblue.
 This is a project that aims to create a script that automates the creation of a shortcut (desktop file) on the real machine whenever a new program is installed on Fedora Silverblue through the toolbox (podman).  
 The manual process below will be used as the basis.
 
-## Manual Process
+## Manual_Process
 
 - Made a copy of the desktop file and icon to the home folder:
 
