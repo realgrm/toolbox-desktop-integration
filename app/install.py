@@ -172,4 +172,4 @@ sts = subprocess.Popen("update-desktop-database" + " ~/.local/share/applications
 
 # _______________________________________________________________
 # start another script
-#import update_desktop_files
+import update_desktop_files
