@@ -20,6 +20,11 @@ app_folder=os.environ['HOME']+"/.update_desktop_files"
 
 # to show informations to the user
 
+def msg_show_title():
+    print("\n\n_____________________")
+    print("\nINSTALL DESKTOP FILES SCRIPT")
+    print("_____________________\n")
+
 def msg_link_created():
     print("created symlink:\n"+click+"\n\nthat redirects to:\n"+havetolink+"\n")
 
@@ -47,9 +52,13 @@ def msg_debug():
 
 # _______________________________________________________________
 
-print("\n\n_____________________")
-print("\nINSTALL DESKTOP FILES SCRIPT")
-print("_____________________\n")
+#Main code
+
+# _______________________________________________________________
+
+#show info to user
+
+msg_show_title()
 
 # _______________________________________________________________
 
@@ -73,7 +82,7 @@ for overlay_id in os.listdir(c_overlay):
 
         a=[c_overlay+"/"+overlay_id+c_usrshare_sufix+"/applications", \
         c_overlay+"/"+overlay_id+c_usrshare_sufix+"/icons", \
-        app_folder+"/applications_backup/"+overlay_id[:4]]
+        app_folder+"/applications_backup/toolbox_"+overlay_id[:4]]
         
         for i in a:
             try: 
