@@ -60,5 +60,19 @@ Show Applications: App icon in Dash indicates that it is running, however in the
 
 # Installation
 
-The first 
+- Create the folder ~/.update_desktop_files
+>- From terminal  
+`mkdir ~/.update_desktop_files`
+- Download the files
+>- install.py
+>- update_desktop_files.py
+>- update_desktop_files.png
+>- update_desktop_files.desktop
+- Paste all these files in ~/.update_desktop_files
+- Run install.py from this folder
+>- From terminal
+>>- enter in directory
+`cd ~/.update_desktop_files`
+>>- run installation script
+`./install.py`
 
