@@ -64,8 +64,9 @@ Menu Editor: The app shortcut is now visible to menu editors, such as Menulibre
 
 # How_it_works
 script install.py
-- Create a desktop file to trigger the update_desktop_files.py script
-- run the script update_desktop_files.py
+- Checks if a container is created. If it is:
+>- Create a desktop file to trigger the update_desktop_files.py script
+>- run the script update_desktop_files.py
 
 
 script update_desktop_files.py
