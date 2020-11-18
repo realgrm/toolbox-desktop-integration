@@ -7,6 +7,7 @@
 [Goal](./README.md#Goal)  
 [Manual Process](./README.md#Manual_Process)  
 [Results](./README.md#Results)  
+[How it works](./README.md#How_it_works)  
 [Installation](./README.md#Installation)  
 [Usage](./README.md#Usage)  
 
@@ -60,6 +61,25 @@ Show Applications: App icon in Dash indicates that it is running, however in the
 ![image](https://user-images.githubusercontent.com/23300290/98615618-d616d400-22d9-11eb-8fce-3e3d3c09ffaa.png)
 
 Menu Editor: The app shortcut is now visible to menu editors, such as Menulibre
+
+# How_it_works
+script install.py
+- Create a desktop file to trigger the update_desktop_files.py script
+- run the script update_desktop_files.py
+
+
+script update_desktop_files.py
+
+- Search for ".desktop" files inside specific folders
+>- Get overlay_id of these folders
+>- Create a backup folder inside the app's folder
+>>- Create link in ~/.local/share/applications
+>>- Create link in ~/.local/share/icons
+>>- Verify if the desktop file is already modified
+>>>- get icon path for the unmodified ones
+>>>- create a backup of original desktop file
+>>>- save modified content
+>>>>- Try to update app grid
 
 # Installation
 
