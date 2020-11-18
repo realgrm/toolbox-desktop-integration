@@ -8,16 +8,15 @@ import sys
 
 # _______________________________________________________________
 
-# declare key variables
+# declaring some inicial variables
 
-backup_folder=os.environ['HOME']+"/.local/share/applications_backup/"
 usrshare=os.environ['HOME']+"/.local/share"
 app_folder=os.environ['HOME']+"/.update_desktop_files"
 
 
 # _______________________________________________________________
 
-# defining functions
+# defining auxiliar functions
 
 #Print title of the script
 def msg_title():
@@ -78,6 +77,12 @@ def file_size(fname):
 # _______________________________________________________________
 
 # Main code
+
+# _______________________________________________________________
+
+#verify if its necessary to create new link to toolbox
+
+from create_link import link
 
 # _______________________________________________________________
 
@@ -249,7 +254,5 @@ for f in files:
     write_file.close()
     print("\n")
 
-#update app shortcuts in app grid
-sts = subprocess.Popen("update-desktop-database" + " ~/.local/share/applications", shell=True).wait()
-
-#sys.exit("teste")
+#try to update apps in App Grid
+sts = subprocess.Popen("update-desktop-database ~/.local/share/applications", shell=True).wait()
