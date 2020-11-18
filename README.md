@@ -5,13 +5,11 @@
 ## Summary
 [Preface](./README.md#Preface)  
 [Goal](./README.md#Goal)  
-[Manual Process](./README.md#Manual_Process)  
+[Manual Process](./README.md#Manual-Process)  
 [Results](./README.md#Results)  
-[How it works](./README.md#How_it_works)  
+[How it works](./README.md#How-it-works)  
 [Installation](./README.md#Installation)  
 [Usage](./README.md#Usage)  
-
-# test space
 
 # Preface
 
@@ -33,7 +31,7 @@ All the drawbacks listed are my opinion, based on my current use of Silverblue.
 This is a project that aims to create a script that automates the creation of a shortcut (desktop file) on the real machine whenever a new program is installed on Fedora Silverblue through the toolbox (podman).  
 The manual process below will be used as the basis.
 
-# Manual_Process
+# Manual Process
 
 - Made a copy of the desktop file and icon to the home folder:
 
@@ -62,7 +60,7 @@ Show Applications: App icon in Dash indicates that it is running, however in the
 
 Menu Editor: The app shortcut is now visible to menu editors, such as Menulibre
 
-# How_it_works
+# How it works
 script install.py
 - Checks if a container is created. If it is:
 >- Create a desktop file to trigger the update_desktop_files.py script
