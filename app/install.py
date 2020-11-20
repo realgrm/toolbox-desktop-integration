@@ -14,25 +14,39 @@ c_overlay=os.environ['HOME']+"/.local/share/containers/storage/overlay"
 
 # _______________________________________________________________
 
-# defining auxiliar functions
-
-def msg_container_nok():
-    print("Container not found.\nCreate one with the command \"toolbox create\" in the terminal")
+# -----------------------Auxiliar functions---------------------
 
 # _______________________________________________________________
+
+def msg_show_title():
+    print("_____________________")
+    print("_____________________")
+    print("\nINSTALL DESKTOP FILES SCRIPT")
+    print("_____________________")
+    print("_____________________")    
+
+def msg_container_nok():
+    print("\nContainer not found.\nCreate one with the command \"toolbox create\" in the terminal")
+
+# _______________________________________________________________
+
+# ---------------------------Main code---------------------------
+
+# _______________________________________________________________
+msg_show_title()
 
 #check if a container is created
 if not Path(c_overlay).is_dir():
     sys.exit(msg_container_nok())
 
 # create a shortcut in app grip for update desktop files
-print("\n"+"_____________________\n")
-
 desktop_localshare=os.environ['HOME']+"/.local/share/applications/update_desktop_files.desktop"
 
 desktop_appfolder=app_folder+"/update_desktop_files.desktop"
 fileHandler = open(desktop_appfolder, "r")
 replaced_content = ""
+
+# _______________________________________________________________
 
 # adapt file to the user directory
 for line in fileHandler:
