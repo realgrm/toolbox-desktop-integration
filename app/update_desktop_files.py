@@ -14,245 +14,352 @@ usrshare=os.environ['HOME']+"/.local/share"
 app_folder=os.environ['HOME']+"/.update_desktop_files"
 
 
+c_overlay=os.environ['HOME']+"/.local/share/containers/storage/overlay"
+c_usrshare="diff/usr/share"
+app_folder=os.environ['HOME']+"/.update_desktop_files"
+backups_folder=app_folder+"/applications_backup"
+
+
 # _______________________________________________________________
 
-# defining auxiliar functions
+# -----------------------Auxiliar functions---------------------
+
+# _______________________________________________________________
 
 #Print title of the script
 def msg_title():
     print("_____________________")
+    print("_____________________")
     print("\nUPDATE DESKTOP FILES SCRIPT")
+    print("_____________________")
     print("_____________________")
     print("")
 
-#show application's folders  
-def msg_apps_folder():
-    print("applications folder: \n")
-    for i in applink_toolbox:
-        print(usrshare+"/"+"applications"+"/"+i)
+def msg_title_symlink():
+    print("\n_____________________")
+    print("\nVERIFYING SYMLINKS")
+    print("_____________________\n")
 
-#show icon's folders
-def msg_icons_folder():
-    print("\nicons_folder: \n")
-    for i in applink_toolbox:
-        print(usrshare+"/"+"icons"+"/"+i)
+def msg_title_summary():
+    print("\n\n_____________________")
+    print("\nSUMMARY")
+    print("_____________________\n")
+
+def msg_verifying_files():
+    print("\n_____________________")
+    print("\nVERIFYING FILES")
+    print("_____________________\n")
+
+def msg_link_created(click,havetolink):
+    print("created symlink:\n" \
+        +click+"\n\nthat redirects to:\n" \
+        +havetolink+"\n")
+
+
+def msg_link_ok(click,linksto):
+    print("all ok, symlink already exists:\n" \
+        +click+"\n\nit redirects to:\n" \
+        +linksto+"\n")
+
+
+def msg_link_nok(click,linksto,havetolink):
+    print("can't create symlink, because another symlink already exists:\n" \
+        +click+"\n\nit redirects to:\n" \
+        +linksto+"\n\nit shoud be:\n" \
+        +havetolink+"\n")
+
+
+def msg_file_nok(click):
+    print("can't create symlink, because file/folder already exists\n" \
+        +click+"\n\nplease delete (with backup?) or rename it, then try again.")
+
+
+def msg_container_nok():
+    print("Container not found.\n \
+    Create one with the command \"toolbox create\" in the terminal")
+
+
+def msg__invalid_link(click,linksto,havetolink):
+    print("deleted link:\n" \
+    +click+"\n\n \
+    it was redirecting to a non existing location:\n" \
+    +linksto \
+    +"\n\nnow it redirects to:\n" \
+    +havetolink)
+
+
+def msg_backup(backup_folder):
+    print("\nbackup of file created in:\n"+backup_folder+"\n") 
+
+
+# to show debug info
+def msg_debug(click,linksto,havetolink):
+    print("\n_____________________")
+    print("debug locations:")
+    print("where do i click (exists: "+str(Path(click).exists())+" is symlink: "+str(Path(click).is_symlink())+")\n"+click)
+    print("have to link:\n"+havetolink)
+    print("currently links to:\n"+linksto)
+    print("click=link: "+str(click==linksto))
+    print("link ok: "+str(havetolink==linksto))
+    print("_____________________\n")
+
+#all symlinks
+def msg_symlink_list(symlink_list):
+    symlink_list=sorted(list(dict.fromkeys(symlink_list)))
+    print("all symlink ("+str(len(symlink_list))+"):\n")
+
+    for i in symlink_list:
+        print(str(i))
+
+# symlinks with errors
+def msg_symlink_l_nok(symlink_l_nok):
+    print("_____________________") 
+    symlink_l_nok=sorted(list(dict.fromkeys(symlink_l_nok)))
+    print("\nsymlink with error ("+str(len(symlink_l_nok))+"):\n")
+
+    for i in symlink_l_nok:
+        print(str(i))
 
 #show all desktop files
-def msg_all_desktop():
-    print("_____________________")
-    print("\nall .desktop files in folder ("+str(len(all_files))+"):\n")
+def msg_all_desktop(all_files):
+    print("_____________________")   
+    print("\nall .desktop files from toolbox folder ("+str(len(all_files))+"):\n")
 
     for i in all_files:
         print(str(i))
 
+
 #show all desktop files that needs to be altered
-def msg_dektop():
+def msg_desktop(files_nok):
     print("_____________________")
-    print("\ndesktop files not ok ("+str(len(files))+"):\n")
+    print("\ndesktop files changed ("+str(len(files_nok))+"):\n")
 
-    for i in files:
+    for i in files_nok:
         print(str(i))
-
-        print("\nLines changed:\n")
      
+
 #show changes in each line
-def print_changes(line,new_line):
-    print(line+" [old]")
-    print(new_line+" [new]")
+def msg_changes(line,new_line):
+    if not new_line==line:
+        print(line+" [old]")
+        print(new_line+" [new]")
+
+
+def msg_search_icon_svg(icon_name,icons_folder):
+    print("\nSearching for icon \""+icon_name+"\" in: \n"+ icons_folder)
+    print("\nSearching for svg file")
 
 
 # show messages about icon
-def print_user_icon(icon, icons, string):
+def msg_user_icon(icon, icons, string):
     print("\n"+string+ " found (" +str(len(icons))+") and its size:")
     print(icons)
     print("\nchosen icon (larger): ")
     print(str(icon)+"\n")
 
+# _______________________________________________________________
+
+# ---------------------------Functions---------------------------
+
+# _______________________________________________________________
  
 # get size of file
 def file_size(fname):
     info = os.stat(fname)
     return float(info.st_size)
 
+
+#create backup
+def backup(desktopfile,backup_folder):
+
+    if not Path(backup_folder).exists():
+        os.makedirs(backup_folder)
+    if not Path(backup_folder+"/"+desktopfile.name).exists():
+        shutil.copy(desktopfile,backup_folder)
+        msg_backup(backup_folder)
+
+
+# Create links
+def create_link(click,havetolink):        
+    global symlink_l_nok
+    symlink_l_nok=[]
+    linksto=str(Path(click).resolve())
+
+    try:
+        os.symlink(havetolink, click)
+        msg_link_created(click,havetolink)
+        
+    except:               
+        if Path(click).is_symlink():
+            if not Path(click).exists():
+                os.remove(click)
+                os.symlink(havetolink, click)
+                msg__invalid_link(click,linksto,havetolink)
+            elif havetolink==linksto:
+                msg_link_ok(click,linksto)
+            else:
+                msg_link_nok(click,linksto,havetolink)
+                symlink_l_nok.append(click)
+        else:
+            msg_file_nok(click)
+            symlink_l_nok.append(click)
+
+    #uncomment line below to show more info
+    #msg_debug(click,linksto,havetolink) 
+
+
+
+# Verify if desktop file is ok
+def desktopfileok(desktopfile):
+    global f
+    with open(desktopfile,"r") as f:
+        if "Exec=toolbox run" in f.read():
+            f.close
+            return True
+                  
+
+
+# getting icon path
+def icon_path(usrshare,desktopfile,line):
+    
+    icons_folder=str(desktopfile.parent).replace("applications","icons")
+    icons={}
+    icon_name=line[len("Icon="):]
+
+    #if no icon is specified, jump this step
+    if icon_name=="":
+        return line
+   
+    # Check if it's there a svg file (prefer)
+    for icon in Path(icons_folder).glob('**/'+icon_name+'.*'):
+        if str(icon).rsplit(".",1)[1]=="svg":
+            return "Icon="+str(icon)
+        elif str(icon).rsplit(".",1)[1]=="png":
+            icons[icon]=file_size(icon)
+        
+    # if found, get the larger icon from the list
+    if len(icons)>0:
+        icon=max(icons, key=icons.get)
+        msg_user_icon(icon,icons,"svg icons")
+        return "Icon="+str(icon)
+    
+    else: 
+        print("\nIcon not found. Try to edit the desktop file manually later")
+        return line
 # _______________________________________________________________
 
-# Main code
+# ---------------------------Main code---------------------------
 
 # _______________________________________________________________
-
-#verify if its necessary to create new link to toolbox
-
-from create_link import link
-
-# _______________________________________________________________
-
-# get all desktop files inside folders
 
 all_files=[]
-files=[]
-applink_toolbox=[]
+files_nok=[]
+symlink_list=[]
+symlink_l_nok=[]
 
-
-# create a list of folders inside "~/usr/share/applications" that contain "toolbox_" in their names
-for i in os.listdir(usrshare+"/applications"):
-    if "toolbox_" in i:
-        applink_toolbox.append(i)
-
-for id_trim in applink_toolbox:
-        toolbox_apps_folder=usrshare+"/"+"applications"+"/"+id_trim 
-        
-        # filter the desktop apps and make a list
-        for app in Path(toolbox_apps_folder).glob('*.desktop'):
-            all_files.append(app)
-
-            #check those that doesn't run in toolbox
-            with open(app,"r") as f:
-                if "Exec=toolbox run" not in f.read():
-
-                    #list of .desktop files that dont contain "toolbox run"
-                    files.append(app)
-                    
-            f.close
-
-
-# _______________________________________________________________
-
-#show info to user
 
 msg_title()
-msg_apps_folder()
-msg_icons_folder()
-msg_all_desktop()
-msg_dektop()
+
+
+
+
+#get ids of folders that contains desktop files
+for o_id in os.listdir(c_overlay):
+    for desktopfile in \
+        Path(c_overlay+"/"+o_id+"/") \
+            .glob(c_usrshare+"/applications/"+"*.desktop"):
+        
+        msg_title_symlink()
+        all_files.append(desktopfile.name)
+
+        #create links to folders
+        create_link(usrshare+"/applications/toolbox_"+o_id[:4], \
+            str(desktopfile).rsplit("/",1)[0])
+        
+        symlink_list.append(usrshare+"/applications/toolbox_"+o_id[:4])
+        
+        create_link(usrshare+"/icons/toolbox_"+o_id[:4], \
+            str(desktopfile).rsplit("/",1)[0] \
+            .replace("applications","icons"))
+
+        symlink_list.append(usrshare+"/icons/toolbox_"+o_id[:4])
+
+        #create bakup folder
+        backup(desktopfile, 
+            backups_folder+"/toolbox_"+o_id[:4]+"\n")
+        
+        msg_verifying_files()
+        folder_name=str(desktopfile.parents[1])
+        print("folder:\n"+folder_name)
+
+
+        if desktopfileok(desktopfile)==True:
+            print("\nfile ok:\n"+desktopfile.name)
+        else:
+            f=open(desktopfile,"r")
+            files_nok.append(desktopfile.name)
+           
+            # _______________________________________________________________
+
+            # Configure all lines desktop files in the list
+
+            icons={}
+
+            print("\nchanging file content:\n"+desktopfile.name+"\n")
+
+            
+
+            replaced_content = ""
+            
+            #looping through the file
+            for line in f:
+
+                line = line.strip()
+                new_line=line
+
+                # _______________________________________________________________
+
+                # checking and changing line
+
+                if line.startswith("Exec="):
+                    new_line = line.replace("Exec=","Exec=toolbox run ")
+                    msg_changes(line,new_line)
+                        
+                elif line.startswith("Name="):
+                    new_line = line+" (container)"
+                    msg_changes(line,new_line)
+                        
+                elif line.startswith("DBusActivatable=true"):
+                    new_line = line.replace("DBusActivatable=true", "DBusActivatable=false")
+                    msg_changes(line,new_line)
+
+                elif  line.startswith("Icon="):
+                    new_line=icon_path(usrshare,desktopfile,line)
+                    msg_changes(line,new_line)
+                
+                replaced_content = replaced_content + new_line + "\n"
+
+            f.close()
+                       
+            # _______________________________________________________________
+            
+            #save file
+            with open(desktopfile,"w") as f:
+                f.write(replaced_content)
+                f.close()
+            
+            print("\n")
+            
 
 # _______________________________________________________________
 
-# Configure all desktop files in the list
-
-icons={}
 
 
-
-for f in files:
-    print(str(f))
-
-    #get folder name
-
-    folder_name=str(f)[:str(f).rindex("/")]
-    folder_name=folder_name[folder_name.rindex("/"):]
-
-
-    #open file in read mode
-    fileHandler = open(f, "r")
-    replaced_content = ""
-    
-    #looping through the file
-    for line in fileHandler:
-
-        #stripping line break
-        line = line.strip()
-
-        # if the criterias bellow don't match, the default is to keep the value
-        new_line=line
-
-        # _______________________________________________________________
-
-        # checking and changing line
-
-        if line.startswith("Exec="):
-            new_line = line.replace("Exec=","Exec=toolbox run ")
-            print_changes(line,new_line)
-                
-        elif line.startswith("Name="):
-            new_line = line+" (container)"
-            print_changes(line,new_line)
-                
-        elif line.startswith("DBusActivatable=true"):
-            new_line = line.replace("DBusActivatable=true", "DBusActivatable=false")
-            print_changes(line,new_line)
-
-        # _______________________________________________________________
-        
-        # GETTING ICON PATH
-
-
-        # checking and changing line: getting icon
-        elif  line.startswith("Icon="):
-            
-
-
-            #remove file name
-            icons_folder=usrshare+"/icons"+folder_name
-            
-            #get the name of icon
-            icon_name=line[len("Icon="):]
-     
-            # _______________________________________________________________
-
-            #searching for a svg version of the icon
-
-            print("\nSearching for icon \""+icon_name+"\" in: \n"+ icons_folder)
-            print("\nSearching for svg file")            
-            
-            #if no icon is specified, jump this step
-            if icon_name=="": next
-
-            icons={}
-            
-            # Check if it's there a svg file (prefer)
-            for app in Path(icons_folder).glob('**/*'+icon_name+'.svg'):
-                icons[app]=file_size(app)
-                
-      
-
-            # if found, get the larger icon from the list
-            if len(icons)>0:
-                icon=max(icons, key=icons.get)
-                print_user_icon(icon,icons,"svg icons")
-                new_line = "Icon="+str(icon)
-                
-            # _______________________________________________________________
-
-            #searching for other formats of icon, if svg not found
-               
-            else:
-                
-                print("svg not found. Searching all matching filename instead")
-                
-                for app in Path(icons_folder).glob('**/*'+icon_name+'*'):
-                    icons[app]=file_size(app)
-
-                # if found, get the larger icon from the list
-                if len(icons)>0:
-                    icon=max(icons, key=icons.get)
-                    print_user_icon(icon,icons,"all files")
-                    new_line = "Icon="+str(icon)
-                
-                else: print("Icon not found. Try to edit the desktop file manually later")
-        # _______________________________________________________________
-
-        #concatenate the new string and add an end-line break
-        replaced_content = replaced_content + new_line + "\n"
-    
-
-
-    #close the file
-    fileHandler.close()
-
-    #create a backup
-    backup_folder=app_folder+"/applications_backup"+folder_name
-    shutil.copy(str(f),backup_folder)
-    print("\nbackup of file created in:\n"+backup_folder+"\n")
-    
-    #Open file in write mode
-    write_file = open(f, "w")
-
-    #overwriting the old file contents with the new/replaced content
-    write_file.write(replaced_content)
-
-    #close the file
-    write_file.close()
-    print("\n")
+msg_title_summary()
+msg_symlink_list(symlink_list)
+msg_symlink_l_nok(symlink_l_nok)
+msg_all_desktop(all_files)
+msg_desktop(files_nok)
 
 #try to update apps in App Grid
 sts = subprocess.Popen("update-desktop-database ~/.local/share/applications", shell=True).wait()
