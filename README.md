@@ -1,7 +1,5 @@
 # podman-desktop-file-copy-to-user
 
-### !! UNDER CONSTRUCTION !!
-
 ## Summary
 [Preface](./README.md#Preface)  
 [Goal](./README.md#Goal)  
