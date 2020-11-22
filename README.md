@@ -9,6 +9,8 @@
 [Installation](./README.md#Installation)  
 [Usage](./README.md#Usage)  
 
+[![update_desktop_files_gif](https://user-images.githubusercontent.com/23300290/99897700-9d341300-2c7a-11eb-8a08-34718dc26734.gif)](https://youtu.be/dKwHdcPl0cE)
+
 # Preface
 
 Currently, to install something in Silverblue, the main options are (with its main drawbacks):
