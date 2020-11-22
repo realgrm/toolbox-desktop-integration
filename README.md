@@ -79,6 +79,20 @@ script update_desktop_files.py
 >>>>- Try to update app grid
 
 # Installation
+### Option 1: With one set of commands
+
+```
+mkdir -p ~/.update_desktop_files/
+cd ~/.update_desktop_files/
+wget https://raw.githubusercontent.com/realgrm/podman-desktop-file-copy-to-user/main/app/install.py
+wget https://raw.githubusercontent.com/realgrm/podman-desktop-file-copy-to-user/main/app/update_desktop_files.py
+wget https://raw.githubusercontent.com/realgrm/podman-desktop-file-copy-to-user/main/app/update_desktop_files.png
+wget https://raw.githubusercontent.com/realgrm/podman-desktop-file-copy-to-user/main/app/update_desktop_files.desktop
+chmod +x ~/.update_desktop_files/install.py
+chmod +x ~/.update_desktop_files/update_desktop_files.py
+~/.update_desktop_files/install.py
+```
+### Option 2: Step by step
 
 - Create the folder ~/.update_desktop_files
 >- Using terminal 
@@ -87,7 +101,9 @@ script update_desktop_files.py
 >- install.py
 >- update_desktop_files.py
 >- update_desktop_files.png
->- update_desktop_files.desktop
+>- update_desktop_files.desktop  
+  
+Thanks to "[DownGit by Minhas Kamal](https://minhaskamal.github.io/DownGit/#/home) you can click ![here](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/realgrm/podman-desktop-file-copy-to-user/tree/main/app) to download  
 - Paste all files of the app folder in ~/.update_desktop_files
 ![app_folder](https://user-images.githubusercontent.com/23300290/99392225-2255ab80-28ba-11eb-9615-89a62f13c0ed.png)
 - Give execution permission to the scripts  
