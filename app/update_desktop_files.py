@@ -353,6 +353,15 @@ for o_id in os.listdir(c_overlay):
 
 # _______________________________________________________________
 
+# updating themes
+
+commands=[
+"cp -r ~/.themes/* ~/.update_desktop_files/themes/", \
+"cp -r /usr/share/themes/* ~/.update_desktop_files/themes/", \
+"/bin/toolbox run sudo cp -r ~/.update_desktop_files/themes/* /usr/share/themes"
+]
+for i in commands:
+    sts = subprocess.Popen(i, shell=True).wait()
 
 
 msg_title_summary()
@@ -363,3 +372,4 @@ msg_desktop(files_nok)
 
 #try to update apps in App Grid
 sts = subprocess.Popen("update-desktop-database ~/.local/share/applications", shell=True).wait()
+
