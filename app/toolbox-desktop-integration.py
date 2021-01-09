@@ -11,12 +11,9 @@ import sys
 # declaring some inicial variables
 
 usrshare=os.environ['HOME']+"/.local/share"
-app_folder=os.environ['HOME']+"/.update_desktop_files"
-
-
 c_overlay=os.environ['HOME']+"/.local/share/containers/storage/overlay"
 c_usrshare="diff/usr/share"
-app_folder=os.environ['HOME']+"/.update_desktop_files"
+app_folder=os.environ['HOME']+"/.local/scripts/toolbox-desktop-integration"
 backups_folder=app_folder+"/applications_backup"
 
 
@@ -353,17 +350,16 @@ for o_id in os.listdir(c_overlay):
 
 # _______________________________________________________________
 
-# updating themes
-
-commands=[
-"cp -r ~/.themes/* ~/.update_desktop_files/themes/", \
-"cp -r /usr/share/themes/* ~/.update_desktop_files/themes/", \
-"/bin/toolbox run sudo cp -r ~/.update_desktop_files/themes/* /usr/share/themes"
-]
-for i in commands:
-    sts = subprocess.Popen(i, shell=True).wait()
+# making themes avaliable to toolbox, since it has access to home folder
 
 
+source = os.listdir("/usr/share/themes")
+destination = os.environ['HOME']+"/.themes"
+for files in source:
+    shutil.copy(files,destination)
+
+
+# show messages to user
 msg_title_summary()
 msg_symlink_list(symlink_list)
 msg_symlink_l_nok(symlink_l_nok)

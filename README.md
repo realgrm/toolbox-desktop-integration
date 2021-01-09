@@ -84,15 +84,19 @@ script update_desktop_files.py
 ### Option 1: With one set of commands
 
 ```
-mkdir -p ~/.update_desktop_files/
-cd ~/.update_desktop_files/
-wget https://raw.githubusercontent.com/realgrm/podman-desktop-file-copy-to-user/main/app/install.py
-wget https://raw.githubusercontent.com/realgrm/podman-desktop-file-copy-to-user/main/app/update_desktop_files.py
-wget https://raw.githubusercontent.com/realgrm/podman-desktop-file-copy-to-user/main/app/update_desktop_files.png
-wget https://raw.githubusercontent.com/realgrm/podman-desktop-file-copy-to-user/main/app/update_desktop_files.desktop
-chmod +x ~/.update_desktop_files/install.py
-chmod +x ~/.update_desktop_files/update_desktop_files.py
-~/.update_desktop_files/install.py
+app_folder="~/.local/scripts/toolbox-desktop-integration/"
+github_applink="https://raw.githubusercontent.com/realgrm/toolbox-desktop-integration/main/app/"
+
+mkdir -p $app_folder
+cd $app_folder
+
+wget ${github_applink}install.py
+wget ${github_applink}toolbox-desktop-integration.py
+wget ${github_applink}toolbox-desktop-integration.png
+wget ${github_applink}toolbox-desktop-integration.desktop
+chmod +x $app/install.py
+chmod +x ${app_folder}toolbox-desktop-integration.py
+${app_folder}install.py
 ```
 ### Option 2: Step by step
 

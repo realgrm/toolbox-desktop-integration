@@ -9,7 +9,7 @@ import sys
 
 # declaring some inicial variables
 
-app_folder=os.environ['HOME']+"/.update_desktop_files"
+app_folder=os.environ['HOME']+"/.local/scripts/toolbox-desktop-integration"
 c_overlay=os.environ['HOME']+"/.local/share/containers/storage/overlay"
 
 # _______________________________________________________________
@@ -40,9 +40,9 @@ if not Path(c_overlay).is_dir():
     sys.exit(msg_container_nok())
 
 # create a shortcut in app grip for update desktop files
-desktop_localshare=os.environ['HOME']+"/.local/share/applications/update_desktop_files.desktop"
+desktop_localshare=os.environ['HOME']+"/.local/share/applications/toolbox-desktop-integration.desktop"
 
-desktop_appfolder=app_folder+"/update_desktop_files.desktop"
+desktop_appfolder=app_folder+"/toolbox-desktop-integration.desktop"
 fileHandler = open(desktop_appfolder, "r")
 replaced_content = ""
 
@@ -86,4 +86,4 @@ print("\n")
 # _______________________________________________________________
 
 # start the main script
-import update_desktop_files
+import toolbox-desktop-integration
