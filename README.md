@@ -104,23 +104,30 @@ So every time you install a GUI app inside a toolbox, you can use this shortcut.
 
 # Manual Process
 
-The manual process below was used as the basis to the creation of these scripts. And is avaliable here if someone wishes to do the work manually instead of using scripts.
+The manual process below was used as the basis to the creation of these scripts. It is an example.
 
-- Made a copy of the desktop file and icon to the home folder:
+It is avaliable here if someone wishes to do the work manually instead of using scripts.
+
+## Make shortcut from toolbox avaliable to the host
+Action: make a copy of the desktop file and icon to the home folder:
 
 | Description 	| Copy (container) 	| Paste (Silverblue) 	|
 |-	|-	|-	|
 | Desktop File Location 	| `~/.local/share/containers/storage/overlay/{overlay-id}/diff/usr/share/applications/blender.desktop` 	| `~/.local/share/applications/toolbox-blender.desktop` 	|
-| Icon File Location 	| `~/.local/share/containers/storage/overlay/{overlay-id}/diff/usr/share/icons/hicolor/scalable/apps/blender.svg` 	| `/home/realgrm/.local/share/icons/hicolor/scalable/apps/toolbox/blender.svg` 	|
+| Icon File Location 	| `~/.local/share/containers/storage/overlay/{overlay-id}/diff/usr/share/icons/hicolor/scalable/apps/blender.svg` 	| `~/.local/share/icons/hicolor/scalable/apps/toolbox/blender.svg` 	|
 
 Replace {overlay-id} with the folder created to your container. Mine was "d0ed434fec06789afb233cd607dee2572efe8f30bf816c7edddc9372b4bd668f" folder.  
 I discover the correct folder by installing an app and searching for the app's desktop file inside `~/.local/share/containers/storage/overlay/`  
 
-- Edited the content of ~/.local/share/applications/toolbox-blender.desktop:
+## Make the shortcut point to the correct executable
+Action: Edit the content of `~/.local/share/applications/toolbox-blender.desktop`:
 
 | Description 	| Before (container) 	| After (Silverblue) 	|
 |-	|-	|-	|
 | Name Line 	| Name=Blender 	| Name=Blender (container) 	|
 | Exec Line 	| Exec=blender% f 	| Exec=toolbox run blender% f 	|
+
+## Make app from toolbox to use applied theme
+Action: Copy the themes from `/usr/share/thems` to `~/.themes` 
 
 
