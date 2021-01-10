@@ -58,24 +58,19 @@ script `update.py`
 - Search for ".desktop" files inside specific folders
   - Get overlay_id of these folders
   - Create a backup folder inside the app's folder
-    - Create link in `~/.local/share/applications`
-    - Create link in `~/.local/share/icons`
-    - Verify if the desktop file is already modified
-      - get icon path for the unmodified ones
-      - create a backup of original desktop file
-      - save modified content
+  - Create link in `~/.local/share/applications`
+  - Create link in `~/.local/share/icons`
+  - Verify if the desktop file is already modified
+    - get icon path for the unmodified ones
+    - create a backup of original desktop file
+    - save modified content
 - Copy themes from `/usr/share/themes` to `~/.themes`, where is visible to all toolboxes
 - Update app grid
 
 # Installation
 
-To install you can enter the bash shell (it returns error in zsh shell), run these comands in terminal:
+To install you can run these comands in terminal:
 
-To make sure you're in bash shell, run this:
-```
-bash
-```
-And then run these:
 ```
 # declaring constants
 app_folder="$HOME/.local/scripts/toolbox-desktop-integration/"
