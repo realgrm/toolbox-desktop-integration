@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Widget Factory (container)
+Comment=A showcase for GTK+ widgets, designed for testing themes.
+Exec=toolbox run gtk3-widget-factory
+Icon=/home/realgrm/.local/share/containers/storage/overlay/d9f4423d79b4bc9141601fa7d4928de19057493c64dbd85d7818195d0bbae588/diff/usr/share/icons/hicolor/256x256/apps/gtk3-widget-factory.png
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Development;GTK;
+NoDisplay=true

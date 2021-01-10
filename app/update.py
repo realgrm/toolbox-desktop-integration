@@ -10,10 +10,13 @@ import sys
 
 # declaring some inicial variables
 
+# folder of this script
+app_folder=os.path.dirname(os.path.realpath(__file__))
+
 usrshare=os.environ['HOME']+"/.local/share"
 c_overlay=os.environ['HOME']+"/.local/share/containers/storage/overlay"
 c_usrshare="diff/usr/share"
-app_folder=os.environ['HOME']+"/.local/scripts/toolbox-desktop-integration"
+print(app_folder)
 backups_folder=app_folder+"/applications_backup"
 
 
@@ -352,11 +355,7 @@ for o_id in os.listdir(c_overlay):
 
 # making themes avaliable to toolbox, since it has access to home folder
 
-
-source = os.listdir("/usr/share/themes")
-destination = os.environ['HOME']+"/.themes"
-for files in source:
-    shutil.copy(files,destination)
+sts = subprocess.Popen("cp -r /usr/share/themes/* $HOME/.themes/", shell=True).wait()
 
 
 # show messages to user

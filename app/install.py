@@ -9,7 +9,9 @@ import sys
 
 # declaring some inicial variables
 
-app_folder=os.environ['HOME']+"/.local/scripts/toolbox-desktop-integration"
+# folder of this script
+app_folder=os.path.dirname(os.path.realpath(__file__))
+
 c_overlay=os.environ['HOME']+"/.local/share/containers/storage/overlay"
 
 # _______________________________________________________________
@@ -86,4 +88,5 @@ print("\n")
 # _______________________________________________________________
 
 # start the main script
-import toolbox-desktop-integration
+import importlib  
+foobar = importlib.import_module("update")

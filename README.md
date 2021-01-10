@@ -49,11 +49,11 @@ Menu Editor: The app shortcut is now visible to menu editors, such as Menulibre
 # How it works
 script `install.py`
 - Checks if a container is created. If it is:
-- Create a desktop file to trigger the `toolbox-desktop-integration.py` script
-- run the script `toolbox-desktop-integration.py`
+- Create a desktop file to trigger the `update.py` script
+- run the script `update.py`
 
 
-script `toolbox-desktop-integration.py`
+script `update.py`
 
 - Search for ".desktop" files inside specific folders
   - Get overlay_id of these folders
@@ -69,11 +69,16 @@ script `toolbox-desktop-integration.py`
 
 # Installation
 
-To install you can copy and paste this in your terminal:
+To install you can enter the bash shell (it returns error in zsh shell), run these comands in terminal:
 
+To make sure you're in bash shell, run this:
+```
+bash
+```
+And then run these:
 ```
 # declaring constants
-app_folder="~/.local/scripts/toolbox-desktop-integration/"
+app_folder="$HOME/.local/scripts/toolbox-desktop-integration/"
 github_applink="https://raw.githubusercontent.com/realgrm/toolbox-desktop-integration/main/app/"
 
 # creating folder where the app will be installed
@@ -82,13 +87,13 @@ cd $app_folder
 
 # downloading the files
 wget ${github_applink}install.py
-wget ${github_applink}toolbox-desktop-integration.py
+wget ${github_applink}update.py
 wget ${github_applink}toolbox-desktop-integration.png
 wget ${github_applink}toolbox-desktop-integration.desktop
 
 # making files executable
-chmod +x $app/install.py
-chmod +x ${app_folder}toolbox-desktop-integration.py
+chmod +x ${app_folder}/install.py
+chmod +x ${app_folder}/update.py
 
 # runing the installation script
 ${app_folder}install.py
@@ -96,8 +101,8 @@ ${app_folder}install.py
 # Usage
 
 When the `install.py` is executed:
-- automatically the script `toolbox-desktop-integration.py` is also executed, so your GUI apps installed from toolbox should appear ins the app grid (may takes a few seconds to update the icon in the app grid)
-- it creates an shortcut in AppGrid called Update toolbox, that can run the script `toolbox-desktop-integration.py` again.
+- automatically the script `update.py` is also executed, so your GUI apps installed from toolbox should appear ins the app grid (may takes a few seconds to update the icon in the app grid)
+- it creates an shortcut in AppGrid called Update toolbox, that can run the script `update.py` again.
 ![image](https://user-images.githubusercontent.com/23300290/99393880-c2accf80-28bc-11eb-8815-8b063d499fb7.png)
 
 So every time you install a GUI app inside a toolbox, you can use this shortcut.
@@ -128,6 +133,4 @@ Action: Edit the content of `~/.local/share/applications/toolbox-blender.desktop
 | Exec Line 	| Exec=blender% f 	| Exec=toolbox run blender% f 	|
 
 ## Make app from toolbox to use applied theme
-Action: Copy the themes from `/usr/share/thems` to `~/.themes` 
-
-
+Action: Copy the themes from `/usr/share/thems` to `~/.themes` s
