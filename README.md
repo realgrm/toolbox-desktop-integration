@@ -1,4 +1,4 @@
-# toolbox-desktop-integration
+# toolbox-desktop-integration  
 
 # Summary
 [Preface](./README.md#Preface)  
@@ -33,8 +33,8 @@ This project aims to integrate the toolboxes installed with the desktop, by:
 
 # Using with podman
 
-Although this was created with toolbox in mind, it was tested with some containers created with podman and it worked the same way.
-
+~~Although this was created with toolbox in mind, it was tested with some containers created with podman and it worked the same way.~~
+EDIT: Currently, it only works with the default toolbox
 
  # Results
  
