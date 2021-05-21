@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Update podman_di
+Comment=Update podman desktop integration
+Icon=podman_di
+Exec=
+Terminal=true
+Actions=
+Categories=Utility;
+DBusActivatable=falses
