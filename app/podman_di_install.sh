@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DESKTOPFILE="podman_di.desktop"
-DESKTOPFOLDER="$HOME/.local/share/applications/"
+DESKTOPFOLDER="$HOME/.local/share/applications"
 ICONFILE="podman_di.png"
 ICONFOLDER="$HOME/.local/share/icons/hicolor/1024x1024/apps"
 UPDATEFILE="podman_di_update.sh"
@@ -17,9 +17,9 @@ cp -f $THISFOLDER/$UPDATEFILE $UPDATEFOLDER/
 
 chmod +x $UPDATEFOLDER/$UPDATEFILE
 
-cp -f $THISFOLDER/$DESKTOPFILE $DESKTOPFOLDER
+cp -f $THISFOLDER/$DESKTOPFILE $DESKTOPFOLDER/$DESKTOPFILE
 
-sed -i "s/^Exec=/Exec=$UPDATEFILE/" $DESKTOPFOLDER
+sed -i "s/^Exec=/Exec=$UPDATEFILE/" $DESKTOPFOLDER/$DESKTOPFILE
 
 cp -f $THISFOLDER/$ICONFILE $ICONFOLDER
 
