@@ -84,7 +84,7 @@ fi
 
 # _______________________________________________________________
 
-$USERHOME=$HOME
+USERHOME=$HOME
 sudo su
 
 find $USERHOME/.local/share/applications/ -type l -name podman-\* -exec rm {} \;
