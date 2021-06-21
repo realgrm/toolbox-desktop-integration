@@ -28,7 +28,7 @@ msg_linkcreated(){
 
 createsymlink(){ #variables:target(path),link name(path)
 
-	if [ -d $1 ]; then
+	sudo if [ -d $1 ]; then
 		sudo ln -sf $1 $2 && \
 		msg_linkcreated $1 $2 && \
 		link=true
