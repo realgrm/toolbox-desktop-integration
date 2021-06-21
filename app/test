@@ -1,0 +1,37 @@
+rm -rf ~/Downloads/snapd-in-Silverblue
+cd ~/Downloads
+git clone https://github.com/realgrm/snapd-in-Silverblue.git
+cd snapd-in-Silverblue
+chmod +x install.sh
+./install.sh
+
+
+echo "--------"
+ls -l /opt/bin/
+echo "--------"
+ls -l /etc/systemd/system/ | grep snap
+echo "--------"
+ls -l /etc/systemd/system/remote-fs.target.wants/ | grep snap
+echo "--------"
+ls -l / | grep home
+echo "--------"
+ls -l / | grep snap
+echo "--------"
+
+sudo chattr -i /
+sudo /opt/bin/snapdSB.sh
+
+sudo nano /etc/systemd/system/snapdSB.service
+sudo nano /opt/bin/snapdSB.sh
+sudo nano /etc/passwd
+
+
+
+FILE=/home
+if [ -d "$FILE" ]; then
+    echo "$FILE is a directory."
+fi
+
+systemctl status snapdSB.service
+journalctl -xeu snapdSB.service
+
