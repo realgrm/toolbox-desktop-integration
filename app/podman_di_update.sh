@@ -29,7 +29,7 @@ msg_linkcreated(){
 createsymlink(){ #variables:target(path),link name(path)
 
 	if [ -d $1 ]; then
-		ln -sf $1 $2 && \
+		sudo ln -sf $1 $2 && \
 		msg_linkcreated $1 $2 && \
 		link=true
 	else
@@ -39,8 +39,8 @@ createsymlink(){ #variables:target(path),link name(path)
 }
 
 iconpathfinder(){ #variables:container name,icon name
-	local svg=$(find -L $USERHOME/.local/share/icons/$1 -regex ".*$2.svg$")
-	local png=$(find -L $USERHOME/.local/share/icons/$1 -regex ".*$2.png$")
+	local svg=$(find -L $HOME/.local/share/icons/$1 -regex ".*$2.svg$")
+	local png=$(find -L $HOME/.local/share/icons/$1 -regex ".*$2.png$")
 
 	if [ svg != "" ]
 		then icon_path= $svg
@@ -84,12 +84,9 @@ fi
 
 # _______________________________________________________________
 
-USERHOME=$HOME
-sudo su
-
-find $USERHOME/.local/share/applications/ -type l -name podman-\* -exec rm {} \;
-find $USERHOME/.local/share/icons/ -type l -name podman-\* -exec rm {} \;
-find $USERHOME/.local/share/themes/ -type l -name podman-\* -exec rm {} \;
+find $HOME/.local/share/applications/ -type l -name podman-\* -exec rm {} \;
+find $HOME/.local/share/icons/ -type l -name podman-\* -exec rm {} \;
+find $HOME/.local/share/themes/ -type l -name podman-\* -exec rm {} \;
 
 containerlist=($(podman container list --all | \
 	awk '{print $NF}' | \
@@ -112,22 +109,22 @@ for container in ${containerlist[@]}; do
 	printf "\n\n${f2}##### applications link #####${rf}\n\n"
 	createsymlink \
 		$UpperDir/usr/share/applications \
-		$USERHOME/.local/share/applications/podman-$container
+		$HOME/.local/share/applications/podman-$container
 
 
 	printf "\n\n${f2}##### icons link #####${rf}\n\n"
 	createsymlink \
 		$UpperDir/usr/share/icons \
-		$USERHOME/.local/share/icons/podman-$container
+		$HOME/.local/share/icons/podman-$container
 
 	printf "\n\n${f2}##### editing desktop file #####${rf}\n\n"
 	printf "\nEdited desktop files:\n"
 
 
-	if [ -L $USERHOME/.local/share/applications/podman-$container ]
+	if [ -L $HOME/.local/share/applications/podman-$container ]
 	then
 		apps=$(find -L \
-			$USERHOME/.local/share/applications/podman-$container \
+			$HOME/.local/share/applications/podman-$container \
 			-regex ".*.desktop$")
 
 		for app in ${apps[@]}; do
@@ -143,15 +140,15 @@ printf "\nSymlinks created:\n\n"
 
 usrthemes=$(find /usr/share/themes/ -maxdepth 1 -mindepth 1 -type d)
 
-	mkdir -p "$USERHOME/.local/share/themes/"
+	mkdir -p "$HOME/.local/share/themes/"
 
 	for theme in ${usrthemes[@]}; do
 		themename="${theme##*/}"
-		ln -s $theme $USERHOME/.local/share/themes/podman-$themename
+		ln -s $theme $HOME/.local/share/themes/podman-$themename
 		printf "%b\n" "$theme"  \
-			"$USERHOME/.local/share/themes/podman-$themename\n"
+			"$HOME/.local/share/themes/podman-$themename\n"
 	done
 
-update-desktop-database $USERHOME/.local/share/applications
+update-desktop-database $HOME/.local/share/applications
 
 printf "\n\n${f2}############### End ###############${rf}\n\n"
