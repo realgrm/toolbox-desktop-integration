@@ -28,16 +28,16 @@ msg_linkcreated(){
 
 createsymlink(){ #variables:target(path),link name(path)
 
-	sudo -i -u root bash << EOF
+	sudo bash -c "
 		if [ -d $1 ]; then
 			ln -sf $1 $2 && \
 			msg_linkcreated $1 $2 && \
 			link=true
 		else
-			printf "%b\n" "Symlink not created: directory don't exist" "$1"
+			printf '%b\n' 'Symlink not created: directory dont exist' '$1'
 
 		fi
-	EOF
+	"
 }
 
 iconpathfinder(){ #variables:container name,icon name
